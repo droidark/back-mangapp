@@ -22,7 +22,7 @@ public class MainController {
 	public List<String> main(){
 		
 		User u = new User();
-		u.setUsername("fozz");
+		u.setUsername("lordCabula");
 		u.setPassword("123123");
 		u.setEmail("fozz@abc.xyz");
 		u.setAvatar("avatar");
@@ -35,8 +35,8 @@ public class MainController {
 		userService.save(u);
 		
 		List<String> list = new ArrayList<String>();
-		Integer i = userService.findAll().size();
-		list.add(i.toString());
+//		Integer i = userService.findAll().size();
+//		list.add(i.toString());
 		list.add("Dragon Ball Z");
 		list.add("Dragon Ball GT");
 		list.add("Dragon Ball Super");

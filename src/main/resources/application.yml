@@ -1,0 +1,10 @@
+server:
+  port: 3702
+spring:
+  jpa: 
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    url: jdbc:postgresql://localhost:5433/mangapp
+    username: postgres
+    password: admin
