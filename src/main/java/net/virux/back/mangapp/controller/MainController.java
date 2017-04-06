@@ -22,7 +22,7 @@ public class MainController {
 	public List<String> main(){
 		
 		User u = new User();
-		u.setUsername("lordCabula");
+		u.setUsername("fozz");
 		u.setPassword("123123");
 		u.setEmail("fozz@abc.xyz");
 		u.setAvatar("avatar");

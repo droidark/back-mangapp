@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import net.virux.back.mangapp.model.User;
@@ -16,12 +18,15 @@ public class UserServiceImpl implements UserService{
 
 	@Resource
 	private UserRepository userRepository;
-
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	@Override
 	public User save(User user) {
-		System.out.println(userRepository.findByUsername(user.getUsername()));
-		if (findByUsername(user.getUsername()) == null) {
-//			user.setPassword(passwordEncoder.encode(user.getPassword()));
+		System.out.println(user.getUsername());
+		if (userRepository.findByUsername(user.getUsername()) == null) {
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			user.setSignUpDate(new Date());
 			user.setState("Pending");
 //			Set<Profile> profiles = new HashSet<Profile>();

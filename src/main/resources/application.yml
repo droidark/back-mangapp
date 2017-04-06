@@ -1,8 +1,10 @@
+server:
+  port: 3702 
 spring:
   jpa: 
     hibernate:
       ddl-auto: create-drop
   datasource:
-    url: jdbc:postgresql://ec2-50-17-236-15.compute-1.amazonaws.com:5432/d13r4mkg8opa3s
-    username: dhuzznalodazpb
-    password: a9e6ff0365c5e130b20d92430ab903d9880549872f5884706488265a1fdffd62
+    url: jdbc:postgresql://localhost:5433/mangapp
+    username: postgres
+    password: admin
