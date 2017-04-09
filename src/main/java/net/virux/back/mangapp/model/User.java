@@ -26,7 +26,7 @@ public class User{
 //	private Set<Title> titles = new HashSet<Title>();
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "id_user")
 	public Integer getIdUser() {
 		return idUser;
