@@ -1,9 +1,11 @@
+server:
+  port: 3702
 spring:
   jpa: 
     hibernate:
       ddl-auto: update
     show-sql: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/mangapp
-    username: root
+    url: jdbc:postgresql://localhost:5433/mangapp
+    username: postgres
     password: admin

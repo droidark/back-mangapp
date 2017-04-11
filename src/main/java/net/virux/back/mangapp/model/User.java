@@ -1,12 +1,18 @@
 package net.virux.back.mangapp.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,8 +28,9 @@ public class User{
 	private Date signUpDate;
 	private String ipAddress;
 	private String state;
-//	private Set<Profile> profiles = new HashSet<Profile>();
-//	private Set<Title> titles = new HashSet<Title>();
+	private Set<Profile> profiles = new HashSet<Profile>();
+	private Set<Title> titles = new HashSet<Title>();
+	private Set<Issue> issues = new HashSet<Issue>();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -106,4 +113,47 @@ public class User{
 	public void setState(String state) {
 		this.state = state;
 	}
+	
+	//	RELATIONSHIP USER <-> PROFILE
+	@ManyToMany(cascade = CascadeType.MERGE)
+	@JoinTable(
+			name = "map_user_x_profile", 
+			joinColumns = {@JoinColumn(name = "id_user")}, 
+			inverseJoinColumns = {@JoinColumn(name = "id_profile")}
+	)
+	public Set<Profile> getProfiles() {
+		return profiles;
+	}
+	public void setProfiles(Set<Profile> profiles) {
+		this.profiles = profiles;
+	}
+	
+	//	RELATIONSHIP USER <-> TITLE
+	@ManyToMany(cascade = CascadeType.MERGE)
+	@JoinTable(
+			name = "map_user_x_title",
+			joinColumns = {@JoinColumn(name = "id_user")},
+			inverseJoinColumns = {@JoinColumn(name = "id_title")}
+			)
+	public Set<Title> getTitles() {
+		return titles;
+	}
+	public void setTitles(Set<Title> titles) {
+		this.titles = titles;
+	}
+	
+	//	RELATIONSHIP USER <-> ISSUE
+	@ManyToMany(cascade = CascadeType.MERGE)
+	@JoinTable(
+			name = "map_user_x_issue",
+			joinColumns = {@JoinColumn(name = "id_user")}, 
+			inverseJoinColumns = {@JoinColumn(name = "id_issue")})
+	public Set<Issue> getIssues() {
+		return issues;
+	}
+	public void setIssues(Set<Issue> issues) {
+		this.issues = issues;
+	}
+	
+	
 }
