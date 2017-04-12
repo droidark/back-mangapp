@@ -28,7 +28,7 @@ public class Issue {
 	private Date issueDateLaunchJp;
 	private Date issueDateLaunchMx;
 	private String issue_isbn_jp;
-	private String issue_isbn_mx;
+	private String issue_isbn_mx;	
 	private Set<User> users = new HashSet<User>();
 	
 	@Id
@@ -49,6 +49,7 @@ public class Issue {
 	public void setTitle(Title title) {
 		this.title = title;
 	}
+	
 	@Column(name = "issue_name_jp")
 	public String getIssueNameJp() {
 		return issueNameJp;
@@ -112,6 +113,7 @@ public class Issue {
 	public void setIssue_isbn_mx(String issue_isbn_mx) {
 		this.issue_isbn_mx = issue_isbn_mx;
 	}
+	
 	@ManyToMany(mappedBy = "issues")
 	public Set<User> getUsers() {
 		return users;

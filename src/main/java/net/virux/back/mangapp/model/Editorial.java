@@ -1,10 +1,14 @@
 package net.virux.back.mangapp.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +19,7 @@ public class Editorial {
 	private String editorialName;
 	private String editorialUrl;
 	private String editorialAvatar;
+	private Set<Title> titles = new HashSet<Title>();
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -48,5 +53,13 @@ public class Editorial {
 	}
 	public void setEditorialAvatar(String editorialAvatar) {
 		this.editorialAvatar = editorialAvatar;
+	}
+	
+	@OneToMany(mappedBy = "editorial")
+	public Set<Title> getTitles() {
+		return titles;
+	}
+	public void setTitles(Set<Title> titles) {
+		this.titles = titles;
 	}
 }
